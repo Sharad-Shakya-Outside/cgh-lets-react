@@ -1,0 +1,13 @@
+.header::before {
+  position: fixed;
+  background-color: white;
+  content: "";
+  width: 100vw;
+  height: 0;
+  z-index: 2;
+  transition: all 0.6s ease-in;
+}
+
+.header.open::before {
+  height: 100vh;
+}
