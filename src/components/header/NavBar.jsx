@@ -4,10 +4,9 @@ import { navItems } from "@/data/navItems";
 import clsx from "clsx";
 import Link from "next/link";
 
-export const NavBar = ({ handleMenuToggle, isMenuOpen }) => {
+export const NavBar = ({ handleMenuToggle, isMenuOpen, setIsMenuOpen }) => {
 
-  const setMenuToggle = (e) => {
-    e.preventDefault();
+  const setMenuToggle = () => {
     handleMenuToggle();
   };
 
@@ -44,7 +43,7 @@ export const NavBar = ({ handleMenuToggle, isMenuOpen }) => {
       <ul id="primary-menu" className={clsx("absolute md:static z-2 flex flex-col md:flex-row gap-[30px] mt-8 md:mt-0 transition-opacity delay-[0.3s] duration-[0.6s] md:opacity-100", isMenuOpen ? 'opacity-100' : 'opacity-0')}>
         {navItems?.map((navItem) => (
           <li key={navItem.id}>
-            <Link href={navItem.slug} className="pointer-events-none md:pointer-events-auto">{navItem.label}</Link>
+            <Link href={navItem.slug} onClick={() => setIsMenuOpen(false)} className={clsx("md:pointer-events-auto", isMenuOpen ? "pointer-events-auto" : "pointer-events-none")}>{navItem.label}</Link>
           </li>
         ))}
       </ul>

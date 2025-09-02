@@ -26,8 +26,6 @@ export const cghData = async (filter) => {
       throw new Error(`Data not found: ${response.statusText}`);
     }
     const data = await response.json();
-    const newData = structuredClone(data);
-    console.log(newData);
     return data;
   } catch (error) {
     throw new Error(`Data not found: ${response.statusText}`);
